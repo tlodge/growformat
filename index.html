@@ -1,0 +1,30 @@
+<html>
+    <head>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta charset="utf-8">
+       <title>{{STORY_NAME}}</title>
+   </head>
+    <body>
+        {{STORY_DATA}}
+    
+        <script title="Twine engine code" data-main="example">
+            (function(){
+                // Find the 'tw-storydata' element.
+                let storydata = document.querySelector('tw-storydata');
+                
+                // Get the 'startnode' attribute. Save its 'value'.
+                let startnode = storydata.attributes['startnode'].value;
+                
+                // Find the element with a 'pid' of the startnode
+                let passagedata = document.querySelector(`[pid="${startnode}"]`);
+                
+                // Create a new 'tw-passage' element
+                let passage = document.createElement('tw-passage');
+                // Set the 'innerHTML' of the passagedata to 'tw-passage' element
+                passage.innerHTML = passagedata.innerHTML;
+                // Append the child element to the HTML <body>
+                document.body.appendChild(passage);
+            }())
+        </script>
+    </body>
+</html>
